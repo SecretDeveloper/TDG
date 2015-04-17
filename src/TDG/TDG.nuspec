@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://raw.githubusercontent.com/SecretDeveloper/TestDataGenerator/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/SecretDeveloper/TestDataGenerator</projectUrl>    
+    <iconUrl>https://raw.githubusercontent.com/SecretDeveloper/TestDataGenerator/master/icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>    
+    <copyright>$copyright$</copyright>
+    <tags>Test data generator generate regular expression</tags>
+  </metadata>
+<files>
+      <file src="C:\Development\projects\github.com\secretdeveloper\TDG\BuildOutput\TestDataGenerator.Core.dll" target="" />
+      <file src="C:\Development\projects\github.com\secretdeveloper\TDG\BuildOutput\tdg.exe" target="" />
+      <file src="C:\Development\projects\github.com\secretdeveloper\TDG\BuildOutput\tdg-patterns\default.tdg-patterns" target="" />
+      <file src="C:\Development\projects\github.com\secretdeveloper\TDG\BuildOutput\tdg-patterns\language.tdg-patterns" target="" />
+      <file src="C:\Development\projects\github.com\secretdeveloper\TDG\BuildOutput\Eloquent.dll" target="" />
+      <file src="C:\Development\projects\github.com\secretdeveloper\TDG\BuildOutput\CommandLine.dll" target="" />
+      <file src="C:\Development\projects\github.com\secretdeveloper\TDG\BuildOutput\CommandLine.xml" target="" />
+      <file src="C:\Development\projects\github.com\secretdeveloper\TDG\BuildOutput\tdg.exe.config" target="" />      
+  </files>
+</package>
