@@ -3,6 +3,8 @@
 # ![TDG](https://raw.githubusercontent.com/SecretDeveloper/TDG/master/icon.png) TDG
 A command line tool that can be used to generate data for testing, templating and other uses.  You provide it with a pattern containing symbols defining the output you want to produce and it will create random data to match that pattern.
 
+<image src="https://ci.appveyor.com/api/projects/status/rslpgl8ub9t0i9pb?svg=true" width="300">
+
 ## Features
 - Easy to use syntax.
 - Regex-like expressions, familiar to many.
