@@ -42,6 +42,7 @@ Thumbs.db
 bin/
 obj/
 TestResults/
+releases/
 TestOutput/
 BuildOutput/
 packages/
