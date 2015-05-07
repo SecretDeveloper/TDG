@@ -79,8 +79,9 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TestDataGenerator.Core">
-      <HintPath>..\packages\TestDataGenerator.Core.4.0.0.0\lib\net45\TestDataGenerator.Core.dll</HintPath>
+    <Reference Include="TestDataGenerator.Core, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\TestDataGenerator.Core.4.0.1.0\lib\net45\TestDataGenerator.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
