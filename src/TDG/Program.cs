@@ -122,9 +122,10 @@ namespace gk.DataGenerator.tdg
                 generateFrom = AlphaNumericGenerator.GenerateFromPattern;
             }
 
-            GenerationConfig config = new GenerationConfig();
+            GenerationConfig config = null;
             if (cla.Seed.HasValue || !cla.NamedPatterns.IsNullOrEmpty())
             {
+                config = new GenerationConfig();
                 if (cla.Seed.HasValue) config.Seed = cla.Seed;
                 if (!cla.NamedPatterns.IsNullOrEmpty()) cla.NamedPatterns.Split(';').ToList().ForEach(config.PatternFiles.Add);
             }
