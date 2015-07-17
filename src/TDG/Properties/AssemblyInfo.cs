@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Test Data Generator")]
+[assembly: AssemblyTitle("TDG")]
 [assembly: AssemblyDescription("A command line tool that can be used to generate data for testing or other uses. You provide it with a pattern containing symbols defining the output you want to produce and it will create random data to match that pattern.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("@SecretDeveloper")]
@@ -31,4 +31,4 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("4.0.2")]
+[assembly: AssemblyVersion("4.1.0")]

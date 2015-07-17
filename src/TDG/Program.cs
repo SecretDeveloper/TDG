@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Eloquent;
 using TestDataGenerator.Core;
 using TestDataGenerator.Core.Exceptions;
 using TestDataGenerator.Core.Generators;
@@ -43,7 +42,7 @@ namespace gk.DataGenerator.tdg
                     var paths = new List<string>();
                     paths.Add("default");
 
-                    if (!cla.NamedPatterns.IsNullOrEmpty()) cla.NamedPatterns.Split(';').ToList().ForEach(paths.Add);
+                    if (!string.IsNullOrEmpty(cla.NamedPatterns)) cla.NamedPatterns.Split(';').ToList().ForEach(paths.Add);
 
                     Console.WriteLine("Named Parameters:");
                     foreach (var file in paths)
@@ -60,11 +59,11 @@ namespace gk.DataGenerator.tdg
                 {
                     var template = GetTemplateValue(cla);
 
-                    if (!template.IsNullOrEmpty() && !cla.OutputFilePath.IsNullOrEmpty()) // output path provided.
+                    if (!string.IsNullOrEmpty(template) && !string.IsNullOrEmpty(cla.OutputFilePath)) // output path provided.
                     {
                         OutputToFile(cla, template);
                     }
-                    else if (!template.IsNullOrEmpty())
+                    else if (!string.IsNullOrEmpty(template))
                     {
                         OutputToConsole(cla, template);
                     }
@@ -96,17 +95,17 @@ namespace gk.DataGenerator.tdg
         private static string GetTemplateValue(CommandLineArgs cla)
         {
             string template="";
-            if (!cla.Template.IsNullOrEmpty()) // template provided -- no header skipping required
+            if (!string.IsNullOrEmpty(cla.Template)) // template provided -- no header skipping required
             {
                 template = cla.Template;
                 if (cla.Verbose) Console.WriteLine("Provided template was '" + template + "'");
             }
-            if (!cla.Pattern.IsNullOrEmpty()) // template provided -- no header skipping required
+            if (!string.IsNullOrEmpty(cla.Pattern)) // template provided -- no header skipping required
             {
                 template = cla.Pattern;
                 if (cla.Verbose) Console.WriteLine("Provided pattern was '" + template + "'");
             }
-            if (!cla.InputFilePath.IsNullOrEmpty()) // input file provided
+            if (!string.IsNullOrEmpty(cla.InputFilePath)) // input file provided
             {
                 template = File.ReadAllText(cla.InputFilePath);
                 if (cla.Verbose) Console.WriteLine("Provided template was '" + template + "'");
@@ -117,17 +116,17 @@ namespace gk.DataGenerator.tdg
         private static void OutputToConsole(CommandLineArgs cla, string template)
         {
             Func<string, GenerationConfig, string> generateFrom = AlphaNumericGenerator.GenerateFromTemplate;
-            if (!cla.Pattern.IsNullOrEmpty())
+            if (!string.IsNullOrEmpty(cla.Pattern))
             {
                 generateFrom = AlphaNumericGenerator.GenerateFromPattern;
             }
 
             GenerationConfig config = null;
-            if (cla.Seed.HasValue || !cla.NamedPatterns.IsNullOrEmpty())
+            if (cla.Seed.HasValue || !string.IsNullOrEmpty(cla.NamedPatterns))
             {
                 config = new GenerationConfig();
                 if (cla.Seed.HasValue) config.Seed = cla.Seed;
-                if (!cla.NamedPatterns.IsNullOrEmpty()) cla.NamedPatterns.Split(';').ToList().ForEach(config.PatternFiles.Add);
+                if (!string.IsNullOrEmpty(cla.NamedPatterns)) cla.NamedPatterns.Split(';').ToList().ForEach(config.PatternFiles.Add);
             }
 
             int ct = 0;
@@ -142,20 +141,20 @@ namespace gk.DataGenerator.tdg
         private static void OutputToFile(CommandLineArgs cla, string template)
         {
             Func<string, GenerationConfig, string> generateFrom = AlphaNumericGenerator.GenerateFromTemplate;
-            if (!cla.Pattern.IsNullOrEmpty())
+            if (!string.IsNullOrEmpty(cla.Pattern))
             {
                 generateFrom = AlphaNumericGenerator.GenerateFromPattern;
             }
 
             GenerationConfig config = null;
-            if(cla.Seed.HasValue || !cla.NamedPatterns.IsNullOrEmpty()){
-                
+            if (cla.Seed.HasValue || !string.IsNullOrEmpty(cla.NamedPatterns))
+            {
                 if (cla.Seed.HasValue)
                 {
                     if (config == null) config = new GenerationConfig();
                     config.Seed = cla.Seed;
                 }
-                if (!cla.NamedPatterns.IsNullOrEmpty())
+                if (!string.IsNullOrEmpty(cla.NamedPatterns))
                 {
                     if (config == null) config = new GenerationConfig();
                     cla.NamedPatterns.Split(';').ToList().ForEach(config.PatternFiles.Add);

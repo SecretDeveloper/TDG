@@ -62,10 +62,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
     </Reference>
-    <Reference Include="Eloquent, Version=1.0.1.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Eloquent.1.0.1.1\lib\net45\Eloquent.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -79,9 +75,9 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TestDataGenerator.Core, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="TestDataGenerator.Core, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\TestDataGenerator.Core.4.0.1.0\lib\net45\TestDataGenerator.Core.dll</HintPath>
+      <HintPath>..\packages\TestDataGenerator.Core.4.1.0.0\lib\net45\TestDataGenerator.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -106,7 +102,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="tdg-patterns\default.tdg-patterns">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
