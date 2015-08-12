@@ -32,7 +32,26 @@ function clean{
     $lastResult = $true
 }
 
+function preBuild{
+   
+    write-host "PreBuild"  -foregroundcolor:blue
+    Try{
+        # Set assembly VERSION
+        Get-Content $basePath\src\$projectName\Properties\AssemblyInfo.Template.txt  -ErrorAction stop |
+        Foreach-Object {$_ -replace "//{VERSION}", "[assembly: AssemblyVersion(""$buildVersion"")]"} | 
+        Foreach-Object {$_ -replace "//{FILEVERSION}", "[assembly: AssemblyFileVersion(""$buildVersion"")]"} | 
+        Set-Content $basePath\src\$projectName\Properties\AssemblyInfo.cs         
+    }
+    Catch{
+        Write-host "PREBUILD FAILED!" -foregroundcolor:red
+        exit
+    }
+}
+
 function build{
+
+    preBuild
+
     # BUILD
     write-host "Building"  -foregroundcolor:blue
     $msbuild = "c:\Windows\Microsoft.NET\Framework\v4.0.30319\msbuild.exe"
