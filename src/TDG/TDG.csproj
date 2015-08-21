@@ -58,9 +58,9 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CommandLine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="CliParse, Version=0.1.6.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\CommandLineParser.1.9.71\lib\net45\CommandLine.dll</HintPath>
+      <HintPath>..\packages\CliParse.0.1.6.0\lib\CliParse.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -98,6 +98,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Properties\AssemblyInfo.Template.txt" />
     <Content Include="tdg-patterns\language.tdg-patterns">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

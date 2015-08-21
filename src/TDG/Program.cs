@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using CliParse;
 using TestDataGenerator.Core;
 using TestDataGenerator.Core.Exceptions;
 using TestDataGenerator.Core.Generators;
@@ -14,7 +15,7 @@ namespace gk.DataGenerator.tdg
         private static void Main(string[] args)
         {
             var cla = new CommandLineArgs();
-            Stopwatch sw = sw = new Stopwatch();
+            var sw = new Stopwatch();
             sw.Start();
 
 #if DEBUG
@@ -22,10 +23,16 @@ namespace gk.DataGenerator.tdg
 #endif
             try
             {
-                var result = CommandLine.Parser.Default.ParseArguments(args, cla);
-                if (!result)
+                var result = cla.CliParse(args);
+                if (!result.Successful)
                 {
                     Console.WriteLine("Parse failed!  Use --help flag for instructions on usage.");
+                    return;
+                }
+
+                if (result.ShowHelp)
+                {
+                    Console.WriteLine(cla.GetUsage());
                     return;
                 }
 
@@ -34,8 +41,6 @@ namespace gk.DataGenerator.tdg
                     Console.Write(cla.GetPatternUsage());
                     return;
                 }
-
-                if(cla.Verbose)Console.WriteLine("{0} - ");
 
                 if (cla.ListNamedPatterns)
                 {
@@ -122,12 +127,19 @@ namespace gk.DataGenerator.tdg
             }
 
             GenerationConfig config = null;
-            if (cla.Seed.HasValue || !string.IsNullOrEmpty(cla.NamedPatterns))
+            if (cla.Seed.HasValue)
             {
                 config = new GenerationConfig();
                 if (cla.Seed.HasValue) config.Seed = cla.Seed;
-                if (!string.IsNullOrEmpty(cla.NamedPatterns)) cla.NamedPatterns.Split(';').ToList().ForEach(config.PatternFiles.Add);
             }
+
+
+            if (!string.IsNullOrEmpty(cla.NamedPatterns))
+            {
+                if(config == null) config = new GenerationConfig();
+                cla.NamedPatterns.Split(';').ToList().ForEach(config.PatternFiles.Add);
+            }
+            
 
             int ct = 0;
             while (ct < cla.Count)
