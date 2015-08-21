@@ -32,13 +32,15 @@ namespace gk.DataGenerator.tdg
 
                 if (result.ShowHelp)
                 {
-                    Console.WriteLine(cla.GetUsage());
+                    var usage = cla.GetUsage();
+                    Console.WriteLine(usage);
                     return;
                 }
 
                 if (cla.ShowPatternHelp)
                 {
-                    Console.Write(cla.GetPatternUsage());
+                    var usage = cla.GetPatternUsage();
+                    Console.Write(usage);
                     return;
                 }
 
@@ -126,20 +128,16 @@ namespace gk.DataGenerator.tdg
                 generateFrom = AlphaNumericGenerator.GenerateFromPattern;
             }
 
-            GenerationConfig config = null;
+            var config = new GenerationConfig();
             if (cla.Seed.HasValue)
             {
-                config = new GenerationConfig();
-                if (cla.Seed.HasValue) config.Seed = cla.Seed;
+                config.Seed = cla.Seed;
             }
-
 
             if (!string.IsNullOrEmpty(cla.NamedPatterns))
             {
-                if(config == null) config = new GenerationConfig();
                 cla.NamedPatterns.Split(';').ToList().ForEach(config.PatternFiles.Add);
             }
-            
 
             int ct = 0;
             while (ct < cla.Count)
