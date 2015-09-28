@@ -5,7 +5,10 @@ using CliParse;
 
 namespace gk.DataGenerator.tdg
 {
-    [ParsableClass("TDG", "Test Data Generation tool")]
+    [ParsableClass("TDG"
+        , "A command line tool that can be used to generate data for testing or other uses. You provide it with a pattern containing symbols defining the output you want to produce and it will create random data to match that pattern."
+        , Copyright = "2015 Gary Kenneally (@SecretDeveloper)"
+        , FooterText = "Either a template (-t), pattern (-p) or input file (-i) value must be provided as input.")]
     internal class CommandLineArgs : Parsable
     {
         [ParsableArgument('t', "template", DefaultValue = "", Description = "The template containing 1 or more patterns to use when producing data.")]
@@ -44,7 +47,9 @@ namespace gk.DataGenerator.tdg
         public string GetUsage()
         {
             //var asm = Assembly.GetExecutingAssembly();
-            return this.GetHelpInfo();
+            //return this.GetHelpInfoFromAssembly(asm, argumentTemplate: "  {shortname},  {name}, {required}, Default:'{defaultvalue}'\n       {description}");
+
+            return this.GetHelpInfo(argumentTemplate: "    {shortname} {name} {required}, Default:'{defaultvalue}'\n        {description}");
         }
 
         public string GetPatternUsage()

@@ -66,13 +66,14 @@ namespace gk.DataGenerator.tdg
                 {
                     var template = GetTemplateValue(cla);
 
-                    if (!string.IsNullOrEmpty(template) && !string.IsNullOrEmpty(cla.OutputFilePath)) // output path provided.
+                    if (!string.IsNullOrEmpty(template)) // output path provided.
                     {
-                        OutputToFile(cla, template);
-                    }
-                    else if (!string.IsNullOrEmpty(template))
-                    {
-                        OutputToConsole(cla, template);
+                        if(!string.IsNullOrEmpty(cla.OutputFilePath))
+                            OutputToFile(cla, template);
+                        else
+                        {
+                            OutputToConsole(cla, template);    
+                        }
                     }
                     else
                     {
@@ -114,6 +115,8 @@ namespace gk.DataGenerator.tdg
             }
             if (!string.IsNullOrEmpty(cla.InputFilePath)) // input file provided
             {
+                if (!File.Exists(cla.InputFilePath)) throw new GenerationException(string.Format("File not found, {0}", cla.InputFilePath));
+
                 template = File.ReadAllText(cla.InputFilePath);
                 if (cla.Verbose) Console.WriteLine("Provided template was '" + template + "'");
             }

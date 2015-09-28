@@ -1,5 +1,5 @@
 param(
-    $buildType = "Release"
+    $buildType = "Debug"
 )
 
 
@@ -145,6 +145,13 @@ function document{
     }
 }
 
+function publish{
+    # DEPLOYING
+    write-host "Publishing Nuget package" -foregroundcolor:blue
+    $outputName = ".\releases\$projectName.$fullBuildVersion.nupkg"
+    nuget push $outputName
+}
+
 function pack{
     # Packing
     write-host "Packing" -foregroundcolor:blue
@@ -166,18 +173,16 @@ function deploy{
 $basePath = Get-Location
 $logPath = "$basePath\logs"
 $buildVersion = Get-Content .\VERSION
+$fullBuildVersion = "$buildVersion.0"
 $projectName = "TDG"
 
-if($buildType -eq "package"){
-    
+if($buildType -eq "publish"){
     $buildType="Release"
 
     clean
-    build
-    #test
-    #document
-    pack
-    #deploy
+    build     
+    pack 
+    publish  
 
     exit
 }
@@ -186,16 +191,10 @@ if($buildType -eq "clean"){
     clean  
     exit
 }
-if($buildType -eq "document"){
-    
-    document
-    exit
-}
 else {
     clean
-    build
-    #test    
-    #document
+    build    
+    pack   
 }
 Write-Host Finished -foregroundcolor:blue
 
