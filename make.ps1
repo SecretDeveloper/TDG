@@ -1,5 +1,5 @@
 param(
-    $buildType = "Debug"
+    $buildType = "Release"
 )
 
 
@@ -145,14 +145,14 @@ function document{
     }
 }
 
-function publish{
+function nugetPublish{
     # DEPLOYING
     write-host "Publishing Nuget package" -foregroundcolor:blue
     $outputName = ".\releases\$projectName.$fullBuildVersion.nupkg"
     nuget push $outputName
 }
 
-function pack{
+function nugetPack{
     # Packing
     write-host "Packing" -foregroundcolor:blue
     nuget pack .\src\$projectName\$projectName.csproj -OutputDirectory .\releases > $logPath\LogPacking.log     
@@ -162,12 +162,15 @@ function pack{
     }
 }
 
-function deploy{
-    # DEPLOYING
-    write-host "Deploying" -foregroundcolor:blue
+function zipOutput{
+    # ZIPPING
+    write-host "Zipping" -foregroundcolor:blue
     $outputName = $projectName+"_V"+$buildVersion+"_BUILD.zip"
-    zip a -tzip .\releases\$outputName -r .\src\BuildOutput\*.* >> $logPath\LogDeploy.log    
-
+    zip a -tzip .\releases\$outputName -r .\BuildOutput\*.* > $logPath\LogZipping.log    
+    if($? -eq $False){
+        Write-host "Zipping FAILED!"  -foregroundcolor:red
+        exit
+    }
 }
 
 $basePath = Get-Location
@@ -176,25 +179,31 @@ $buildVersion = Get-Content .\VERSION
 $fullBuildVersion = "$buildVersion.0"
 $projectName = "TDG"
 
+if($buildType -eq "clean"){    
+    clean  
+    exit
+}
+
 if($buildType -eq "publish"){
     $buildType="Release"
 
     clean
     build     
-    pack 
-    publish  
+    zipOutput
+    nugetPack 
+    nugetPublish  
 
     exit
 }
-if($buildType -eq "clean"){
-    
-    clean  
-    exit
+
+if($buildType -eq "debug"){
+    $buildType="Debug"
 }
-else {
+
     clean
     build    
-    pack   
-}
+    zipOutput
+    nugetPack   
+
 Write-Host Finished -foregroundcolor:blue
 
