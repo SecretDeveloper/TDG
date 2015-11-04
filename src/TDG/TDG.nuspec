@@ -14,16 +14,25 @@
     <copyright>$copyright$</copyright>
     <tags>Test data generator generate regular expression</tags>
   
+    <dependencies>
+      
+    </dependencies>
+
   </metadata>
   <files>
-    
-    <file src="..\..\BuildOutput\tdg.exe" target="lib\net45"/>
-    <file src="..\..\BuildOutput\tdg.exe.config" target="lib\net45"/>
+    <file src="..\..\BuildOutput\**\*.*" />
+<!--
+    <file src="..\..\BuildOutput\**\*.*" target="lib\net45" exclude="..\..\BuildOutput\**\*.*"  />
 
-    <file src="..\..\BuildOutput\tdg-patterns\default.tdg-patterns" target="lib\net45\tdg-patterns"/>
-    <file src="..\..\BuildOutput\tdg-patterns\language.tdg-patterns" target="lib\net45\tdg-patterns"/>
+    <file src="..\..\BuildOutput\tdg.exe" target=""/>
+    <file src="..\..\BuildOutput\tdg.exe.config" target=""/>
+
+    <file src="..\..\BuildOutput\tdg-patterns\default.tdg-patterns" target="tdg-patterns"/>
+    <file src="..\..\BuildOutput\tdg-patterns\language.tdg-patterns" target="tdg-patterns"/>
     
-    <file src="..\..\BuildOutput\CliParse.dll" target="lib\net45"/>
-    <file src="..\..\BuildOutput\TestDataGenerator.Core.dll" target="lib\net45"/>
+    <file src="..\..\BuildOutput\CliParse.dll" target=""/>
+    <file src="..\..\BuildOutput\TestDataGenerator.Core.dll" target=""/>
+-->
+
   </files>
 </package>
