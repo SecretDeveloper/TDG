@@ -58,9 +58,9 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CliParse, Version=0.1.16.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="CliParse, Version=0.2.0.0, Culture=neutral, PublicKeyToken=44e2b6429f34ad39, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\CliParse.0.1.16.0\lib\CliParse.dll</HintPath>
+      <HintPath>..\packages\CliParse.0.2.0.0\lib\CliParse.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -89,7 +89,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Properties\AssemblyInfo.Template.txt" />
+    <None Include="Properties\AssemblyInfo.Template.txt" />
     <Content Include="tdg-patterns\language.tdg-patterns">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

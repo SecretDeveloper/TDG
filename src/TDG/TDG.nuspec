@@ -14,17 +14,16 @@
     <copyright>$copyright$</copyright>
     <tags>Test data generator generate regular expression</tags>
   
-    <dependencies>
-      <group>
-        <dependency id="TestDataGenerator.Core" version="4.1.0"/>
-        <dependency id="CliParse" version="0.1.16.0" />
-      </group>
-    </dependencies>
   </metadata>
   <files>
-    <file src="C:\Development\projects\github.com\secretdeveloper\TDG\BuildOutput\tdg.exe" target=""/>
-    <file src="C:\Development\projects\github.com\secretdeveloper\TDG\BuildOutput\tdg.exe.config" target=""/>
-    <file src="C:\Development\projects\github.com\secretdeveloper\TDG\BuildOutput\tdg-patterns\default.tdg-patterns" target="tdg-patterns"/>
-    <file src="C:\Development\projects\github.com\secretdeveloper\TDG\BuildOutput\tdg-patterns\language.tdg-patterns" target="tdg-patterns"/>
+    
+    <file src="..\..\BuildOutput\tdg.exe" target="lib\net45"/>
+    <file src="..\..\BuildOutput\tdg.exe.config" target="lib\net45"/>
+
+    <file src="..\..\BuildOutput\tdg-patterns\default.tdg-patterns" target="lib\net45\tdg-patterns"/>
+    <file src="..\..\BuildOutput\tdg-patterns\language.tdg-patterns" target="lib\net45\tdg-patterns"/>
+    
+    <file src="..\..\BuildOutput\CliParse.dll" target="lib\net45"/>
+    <file src="..\..\BuildOutput\TestDataGenerator.Core.dll" target="lib\net45"/>
   </files>
 </package>

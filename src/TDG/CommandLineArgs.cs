@@ -11,37 +11,37 @@ namespace gk.DataGenerator.tdg
         , FooterText = "Either a template (-t), pattern (-p) or input file (-i) value must be provided as input.")]
     internal class CommandLineArgs : Parsable
     {
-        [ParsableArgument('t', "template", DefaultValue = "", Description = "The template containing 1 or more patterns to use when producing data.")]
+        [ParsableArgument("template", ShortName = 't', DefaultValue = "", Description = "The template containing 1 or more patterns to use when producing data.")]
         public string Template { get; set; }
 
-        [ParsableArgument('p', "pattern", DefaultValue = "", Description = "The pattern to use when producing data.")]
+        [ParsableArgument("pattern", ShortName = 'p', ImpliedPosition = 0, DefaultValue = "", Description = "The pattern to use when producing data.")]
         public string Pattern { get; set; }
 
-        [ParsableArgument('d', "detailed", DefaultValue = false, Description = "Show help text for pattern symbols")]
+        [ParsableArgument("detailed", ShortName = 'd', DefaultValue = false, Description = "Show help text for pattern symbols.")]
         public bool ShowPatternHelp { get; set; }
 
-        [ParsableArgument('i', "inputfile", DefaultValue = "", Description = "The path of the input file.", Required = false)]
+        [ParsableArgument("inputfile", ShortName = 'i', DefaultValue = "", Description = "The path of the input file.", Required = false)]
         public string InputFilePath { get; set; }
 
         //[Option('headers', "headers", DefaultValue = 0, HelpText = "The line to start reading from, 0 for start of file. Can be used to skip header rows in files.", Required = false, MutuallyExclusiveSet = "fromFile")]
         public int HeaderCount { get; set; }
 
-        [ParsableArgument('o', "output", DefaultValue = "", Description = "The path of the output file.", Required = false)]
+        [ParsableArgument("output", ShortName = 'o', DefaultValue = "", Description = "The path of the output file.", Required = false)]
         public string OutputFilePath { get; set; }
 
-        [ParsableArgument('c', "count", DefaultValue = 1, Description = "The number of items to produce.", Required = false)]
+        [ParsableArgument("count", ShortName = 'c', DefaultValue = 1, Description = "The number of items to produce.", Required = false)]
         public int Count { get; set; }
 
-        [ParsableArgument('s', "seed", Description = "The seed value for random generation. Default is a random value.", Required = false)]
+        [ParsableArgument("seed", ShortName = 's', Description = "The seed value for random generation. Default is a random value.", Required = false)]
         public int? Seed { get; set; }
 
-        [ParsableArgument('v', "verbose", DefaultValue = false, Description = "Verbose output including debug and performance information.", Required = false)]
+        [ParsableArgument("verbose", ShortName = 'v', DefaultValue = false, Description = "Verbose output including debug and performance information.", Required = false)]
         public bool Verbose { get; set; }
 
-        [ParsableArgument('n', "namedpatterns", DefaultValue = "", Description = "A list of ';' seperated file paths containing named patterns to be used in addition to default.tdg-patterns.", Required = false)]
+        [ParsableArgument("namedpatterns", ShortName = 'n', DefaultValue = "", Description = "A list of ';' seperated file paths containing named patterns to be used in addition to default.tdg-patterns.", Required = false)]
         public string NamedPatterns { get; set; }
 
-        [ParsableArgument('l', "listnamedpatterns", DefaultValue = false, Description = "Outputs a list of the named patterns from the default.tdg-patterns file.", Required = false)]
+        [ParsableArgument("listnamedpatterns", ShortName = 'l', DefaultValue = false, Description = "Outputs a list of the named patterns from the default.tdg-patterns file.", Required = false)]
         public bool ListNamedPatterns { get; set; }
         
         public string GetUsage()

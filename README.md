@@ -171,5 +171,3 @@ You can supply configuration values to the generator either as an additional par
 #### Configuration directive syntax
 - `<#{"seed":1}#>` - This configuration provides the Seed value for the random data generation.
 - `<#{ "patternfiles":["c:\mypatterns.tdg-patterns"], "seed":300 } #>` - This configuration provides a Seed value of 300 and a Pattern file that will include Named Patterns to be used by the template.
-
-### Checkout the Examples folder for some further items and ideas.
