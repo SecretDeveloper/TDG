@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>tdg</id>
+    <!-- Managed as part of build process. -->
+    <version>{VERSION}</version>
+    
+    <title>TDG</title>
+    <authors>Gary Kenneally (@SecretDeveloper)</authors>
+    <owners>Gary Kenneally (@SecretDeveloper)</owners>
+    <licenseUrl>https://raw.githubusercontent.com/SecretDeveloper/TDG/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/SecretDeveloper/TDG</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/SecretDeveloper/TDG/master/icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A command line tool that can be used to generate data for testing or other uses. You provide it with a pattern containing symbols defining the output you want to produce and it will create random data to match that pattern.</description>
+    <copyright>Gary Kenneally (@SecretDeveloper) [2015]</copyright>
+    <tags>Test data generator generate regular expression</tags>
+  
+    <dependencies>
+      
+    </dependencies>
+
+  </metadata>
+  <files>
+    <file src="BuildOutput\**\*.*" />
+<!--
+    <file src="..\..\BuildOutput\**\*.*" target="lib\net45" exclude="..\..\BuildOutput\**\*.*"  />
+
+    <file src="..\..\BuildOutput\tdg.exe" target=""/>
+    <file src="..\..\BuildOutput\tdg.exe.config" target=""/>
+
+    <file src="..\..\BuildOutput\tdg-patterns\default.tdg-patterns" target="tdg-patterns"/>
+    <file src="..\..\BuildOutput\tdg-patterns\language.tdg-patterns" target="tdg-patterns"/>
+    
+    <file src="..\..\BuildOutput\CliParse.dll" target=""/>
+    <file src="..\..\BuildOutput\TestDataGenerator.Core.dll" target=""/>
+-->
+
+  </files>
+</package>
