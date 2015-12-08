@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 using CliParse;
 using TestDataGenerator.Core;
 using TestDataGenerator.Core.Exceptions;
@@ -68,6 +69,8 @@ namespace gk.DataGenerator.tdg
 
                     if (!string.IsNullOrEmpty(template)) // output path provided.
                     {
+                        if (cla.Verbose) Console.WriteLine("Creating " + cla.Count.ToString() + " items.");
+
                         if(!string.IsNullOrEmpty(cla.OutputFilePath))
                             OutputToFile(cla, template);
                         else
@@ -125,12 +128,6 @@ namespace gk.DataGenerator.tdg
 
         private static void OutputToConsole(CommandLineArgs cla, string template)
         {
-            Func<string, GenerationConfig, string> generateFrom = AlphaNumericGenerator.GenerateFromTemplate;
-            if (!string.IsNullOrEmpty(cla.Pattern))
-            {
-                generateFrom = AlphaNumericGenerator.GenerateFromPattern;
-            }
-
             var config = new GenerationConfig();
             if (cla.Seed.HasValue)
             {
@@ -145,7 +142,15 @@ namespace gk.DataGenerator.tdg
             int ct = 0;
             while (ct < cla.Count)
             {
-                var item = generateFrom(template, config);
+                string item = "";
+                if (!string.IsNullOrEmpty(cla.Pattern))
+                {
+                    item = AlphaNumericGenerator.GenerateFromPattern(template, config: config);
+                }
+                else
+                {
+                    item = AlphaNumericGenerator.GenerateFromTemplate(template, config);
+                }
                 Console.WriteLine(item);
                 ct++;
             }
@@ -153,35 +158,45 @@ namespace gk.DataGenerator.tdg
 
         private static void OutputToFile(CommandLineArgs cla, string template)
         {
-            Func<string, GenerationConfig, string> generateFrom = AlphaNumericGenerator.GenerateFromTemplate;
-            if (!string.IsNullOrEmpty(cla.Pattern))
+            GenerationConfig config = new GenerationConfig();
+            if (cla.Seed.HasValue)
             {
-                generateFrom = AlphaNumericGenerator.GenerateFromPattern;
+                config.Seed = cla.Seed;
             }
 
-            GenerationConfig config = null;
-            if (cla.Seed.HasValue || !string.IsNullOrEmpty(cla.NamedPatterns))
+            if (!string.IsNullOrEmpty(cla.NamedPatterns))
             {
-                if (cla.Seed.HasValue)
-                {
-                    if (config == null) config = new GenerationConfig();
-                    config.Seed = cla.Seed;
-                }
-                if (!string.IsNullOrEmpty(cla.NamedPatterns))
-                {
-                    if (config == null) config = new GenerationConfig();
-                    cla.NamedPatterns.Split(';').ToList().ForEach(config.PatternFiles.Add);
-                }
+                cla.NamedPatterns.Split(';').ToList().ForEach(config.PatternFiles.Add);
             }
+
 
             using (var fs = new StreamWriter(cla.OutputFilePath))
             {
-                int ct = 0;
-                while (ct < cla.Count)
+                int itemCount = 0;
+                while (itemCount < cla.Count)
                 {
-                    var item = generateFrom(template, config);
-                    fs.WriteLine(item);
-                    ct++;
+                    int bufferCount = 0;
+                    var buffer = new StringBuilder(5000);
+
+                    int numToBuffer = cla.Count - itemCount;
+                    if (numToBuffer > 10) numToBuffer = 10;
+                    
+                    while (bufferCount < numToBuffer)
+                    {
+                        if (!string.IsNullOrEmpty(cla.Pattern))
+                        {
+                            buffer.AppendLine(AlphaNumericGenerator.GenerateFromPattern(template, config: config));
+                        }
+                        else
+                        {
+                            buffer.AppendLine(AlphaNumericGenerator.GenerateFromTemplate(template, config));
+                        }
+                        bufferCount++;
+                        itemCount++;
+                    //    Console.WriteLine("numberToBuffer " + numToBuffer + " bufferCount " + bufferCount + " itemCount " + itemCount);
+                    }
+                   // Console.WriteLine("Writing item");
+                    fs.Write(buffer.ToString());
                 }
             }
         }

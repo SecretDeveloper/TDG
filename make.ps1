@@ -44,7 +44,7 @@ function preBuild{
 
         # Set NUSPEC VERSION
         Get-Content $basePath\templates\$projectName.nuspec.template  -ErrorAction stop |
-        Foreach-Object {$_ -replace "{VERSION}", "$buildVersion"} |         
+        Foreach-Object {$_ -replace "{VERSION}", "$fullBuildVersion"} |         
         Set-Content $basePath\$projectName.nuspec        
     }
     Catch{

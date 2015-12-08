@@ -66,9 +66,9 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="TestDataGenerator.Core, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="TestDataGenerator.Core, Version=4.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\TestDataGenerator.Core.4.1.0.0\lib\net45\TestDataGenerator.Core.dll</HintPath>
+      <HintPath>..\packages\TestDataGenerator.Core.4.3.0.0\lib\net45\TestDataGenerator.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

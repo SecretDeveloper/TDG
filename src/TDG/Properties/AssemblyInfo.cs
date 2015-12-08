@@ -24,5 +24,5 @@ using System.Runtime.InteropServices;
 // The Version items are managed by the build process
 //[assembly: AssemblyVersion("0.0.0.0")]
 //[assembly: AssemblyFileVersion("0.0.0.0")]
-[assembly: AssemblyVersion("5.0.6")]
-[assembly: AssemblyFileVersion("5.0.6")]
+[assembly: AssemblyVersion("5.0.7")]
+[assembly: AssemblyFileVersion("5.0.7")]
