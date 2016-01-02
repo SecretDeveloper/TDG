@@ -24,7 +24,10 @@ namespace gk.DataGenerator.tdg
 #endif
             try
             {
-                var result = cla.CliParse(args);
+                // test for piped content.
+                var arguments = GetArguments(args);
+
+                var result = cla.CliParse(arguments);
                 if (!result.Successful)
                 {
                     Console.WriteLine("Parse failed!  Use --help flag for instructions on usage.");
@@ -102,6 +105,24 @@ namespace gk.DataGenerator.tdg
                 Console.WriteLine("Error:{0}\n\nStackTrace:{1}",ex.Message, ex.StackTrace);
             }
         }
+
+        private static string[] GetArguments(string[] args)
+        {
+            string[] arguments = args;
+
+            var keyAvailable = false;
+            try
+            {
+                keyAvailable = System.Console.KeyAvailable;
+            }
+            catch (InvalidOperationException ex)
+            {
+                var commandLine = Console.In.ReadToEnd();
+                arguments = NativeMethods.CommandLineToArgs(commandLine);
+            }
+            return arguments;
+        }
+
 
         private static string GetTemplateValue(CommandLineArgs cla)
         {
