@@ -5,7 +5,7 @@
 A command line tool that can be used to generate data for testing, templating and other uses.  You provide it with a pattern containing symbols defining the output you want to produce and it will create random data to match that pattern.
 
 [<img src="https://img.shields.io/appveyor/ci/secretdeveloper/TDG/master.svg">](https://ci.appveyor.com/project/SecretDeveloper/TDG)
-[<img src="https://img.shields.io/nuget/dt/TDG.svg">](https://www.nuget.org/packages/TDG/)
+[<img src="https://img.shields.io/nuget/v/TDG.svg">](https://www.nuget.org/packages/TDG/)
 
 ## Features
 - Easy to use syntax.
