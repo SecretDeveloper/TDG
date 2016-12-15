@@ -1,0 +1,95 @@
+<NamedPatterns>
+  <Patterns>
+  <NamedPattern>
+      <Name>csharp</Name>
+      <Pattern>(@using_namespace@\n){1,4}
+
+@namespace_start@
+@block_start@
+
+  @class_start@
+  @block_start@
+
+(    @var@\n){1,9}
+
+(    @code_block@\n){1,9}
+  @block_finish@
+@block_finish@</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>using_namespace</Name>
+      <Pattern>using @verb@(.@verb@{4,12}){0,3};</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>namespace_start</Name>
+      <Pattern>namespace @verb@(.@verb@{4,12}){0,3}</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>class_start</Name>
+      <Pattern>public class @verb@</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>code_block</Name>
+      <Pattern>@block_statement@    
+    @block_start@
+(       @command@;\n){1,8}
+    @block_finish@</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>value</Name>
+      <Pattern>(\"\w{10,20}\"|[0-9]{1,10})</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>command</Name>
+      <Pattern>(@function_call@|@statement@)</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>function_call</Name>
+      <Pattern>@noun@.@verb@\(@value@\)</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>statement</Name>
+      <Pattern>@console_write@</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>console_write</Name>
+      <Pattern>Console.WriteLine\(@value@\)</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>equality_operator</Name>
+      <Pattern>(==|!=|&lt;|&gt;|&lt;=|&gt;=)</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>var</Name>
+      <Pattern>var @noun@_@noun@ = @value@;</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>block_statement</Name>
+      <Pattern>(@if_start@|@for_start@|@while_start@|@using_start@)</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>block_start</Name>
+      <Pattern>{</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>if_start</Name>
+      <Pattern>if \(@verb@ @equality_operator@ @value@\)</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>for_start</Name>
+      <Pattern>for\(var i = 0; i &lt; [0-9]{1,3}; i++\)</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>while_start</Name>
+      <Pattern>while\(i @equality_operator@ @value@\)</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>using_start</Name>
+      <Pattern>using\(var @noun@ = new @verb@(.@verb@{4,12}){0,3}\(@value@\)\)</Pattern>
+    </NamedPattern>
+    <NamedPattern>
+      <Name>block_finish</Name>
+      <Pattern>\}</Pattern>
+    </NamedPattern>
+  </Patterns>
+</NamedPatterns>

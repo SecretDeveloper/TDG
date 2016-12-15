@@ -3,7 +3,7 @@
   <metadata>
     <id>tdg</id>
     <!-- Managed as part of build process. -->
-    <version>5.0.7.0</version>
+    <version>5.2.0.0</version>
     
     <title>TDG</title>
     <authors>Gary Kenneally (@SecretDeveloper)</authors>

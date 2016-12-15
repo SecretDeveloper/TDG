@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TDG")]
+[assembly: AssemblyTitle("TDG - Test Data Generator")]
 [assembly: AssemblyDescription("A command line tool that can be used to generate data for testing or other uses. You provide it with a pattern containing symbols defining the output you want to produce and it will create random data to match that pattern.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("@SecretDeveloper")]
 [assembly: AssemblyProduct("CommandLine")]
-[assembly: AssemblyCopyright("Gary Kenneally (@SecretDeveloper) [2015]")]
+[assembly: AssemblyCopyright("Gary Kenneally (@SecretDeveloper) [2016]")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -24,5 +24,5 @@ using System.Runtime.InteropServices;
 // The Version items are managed by the build process
 //[assembly: AssemblyVersion("0.0.0.0")]
 //[assembly: AssemblyFileVersion("0.0.0.0")]
-[assembly: AssemblyVersion("5.0.7")]
-[assembly: AssemblyFileVersion("5.0.7")]
+[assembly: AssemblyVersion("5.2.0")]
+[assembly: AssemblyFileVersion("5.2.0")]

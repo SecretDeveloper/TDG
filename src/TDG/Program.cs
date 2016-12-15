@@ -150,7 +150,7 @@ namespace gk.DataGenerator.tdg
         private static void OutputToConsole(CommandLineArgs cla, string template)
         {
             var config = new GenerationConfig();
-            if (cla.Seed.HasValue)
+            if (!string.IsNullOrEmpty(cla.Seed))
             {
                 config.Seed = cla.Seed;
             }
@@ -180,7 +180,7 @@ namespace gk.DataGenerator.tdg
         private static void OutputToFile(CommandLineArgs cla, string template)
         {
             GenerationConfig config = new GenerationConfig();
-            if (cla.Seed.HasValue)
+            if (!string.IsNullOrEmpty(cla.Seed))
             {
                 config.Seed = cla.Seed;
             }
