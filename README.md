@@ -103,9 +103,9 @@ Groups can contain several individual symbols or groups of symbols and randomly 
 
 |Alternation|Description|Example|
 |----|------|-----|
-|`(\L\L &#124; \d\d)`|Either two upper-case letters OR two numbers.|'JY'|
-|`(\L\L &#124; \d\d &#124; [AEIOU] &#124; [100-120])`|Either two upper-case letters OR two digits OR an upper-case vowel OR a number between 100 and 120.|'QA'|
-|`(\C &#124; )`|Either a upper-case Consonant or nothing.||
+|(\L\L &#124; \d\d)|Either two upper-case letters OR two numbers.|'JY'|
+|(\L\L &#124; \d\d &#124; [AEIOU] &#124; [100-120])|Either two upper-case letters OR two digits OR an upper-case vowel OR a number between 100 and 120.|'QA'|
+|(\C &#124; )|Either a upper-case Consonant or nothing.||
 
 ### Ranges
 Ranges can contain multiple characters or ranges of characters but no symbols (the items defined within the range will be what is used, no special symbols are allowed).  The item to be produced is selected at random.
